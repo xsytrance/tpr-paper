@@ -1,0 +1,276 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage{xurl}
+\usepackage{enumitem}
+\usepackage{booktabs}
+
+\title{Technological Phylogenetics with Selection Pressure Annotation:
+Toward Version-Controlled Repositories for Material Culture Evolution}
+
+\author{Agenor Rodriguez\\Independent Researcher}
+
+\date{April 20, 2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Research on technological evolution has advanced through patent citation analysis, innovation network modeling, and studies of cumulative culture, yet it still lacks a shared empirical substrate comparable to version control in software or sequence databases in biology. This paper argues that progress is constrained by two related absences: the lack of structured, versioned repositories for non-software artifacts, and the systematic underrepresentation of subjective cultural evidence as a source of selection-pressure information. I propose the Technological Phylogenetic Repository (TPR), a version-controlled representation of material artifact lineages in which each commit records not only what changed, but also the objective and subjective pressures that plausibly contributed to the change. The paper makes three contributions. First, it argues that subjective evidence, including consumer complaints, status judgments, market sentiment, and culturally specific preferences, should be modeled as selection-pressure metadata rather than treated as mere noise. Second, it outlines a multi-agent architecture for constructing such repositories from heterogeneous sources, including patents, archives, museum records, journalism, reviews, and trade literature. Third, it specifies evaluation criteria and downstream applications in computational memetics, cultural evolution, convergence detection, and innovation forecasting. The proposal is intentionally limited in scope: this is a position paper and architectural framework accompanied by a small pilot demonstration, not a large-scale system evaluation. However, a broader literature sweep now spanning 397 collected sources, including a curated Tavily and Perplexity shortlist used here, suggests that the infrastructure gap identified here is real and that a pilot implementation is feasible with current tools.
+\end{abstract}
+
+\section{Introduction}
+How do technologies evolve, and what would it take to study that evolution with something closer to the rigor applied to organisms in biology or codebases in software engineering? At present, there is no unified, structured, version-controlled record of how non-software artifacts change over time together with the pressures that drive those changes. That absence is more than an archival inconvenience. It is a limiting condition on the study of technological evolution.
+
+Software provides a useful contrast. Mature software repositories preserve ordered change histories, timestamps, authorship, diffs, and, often, explanatory metadata through commit messages, issue threads, and pull requests [24, 25, 26, 38]. This does not make software history complete, but it does make it inspectable and tractable. By comparison, the evolution of physical artifacts is distributed across patents, standards, engineering reports, museum databases, manufacturing records, trade catalogs, journalism, product reviews, and oral or ethnographic histories. These materials are abundant, but they are not integrated into a common lineage structure.
+
+Patent citation networks have therefore become the default large-scale substrate for studying technological change. They are valuable because they encode formal prior-art relations and support quantitative work on disruption, convergence, and knowledge flow [15, 16, 17, 18, 19, 20, 21, 22, 23, 37, 39]. Yet patents capture only a narrow slice of the total selection environment. They are selective, strategic, and institutionally bounded. They often omit non-patented modifications, repair-driven redesign, user workarounds, cultural resistance, market anxieties, and many of the pressures that determine whether a design variant persists, spreads, or disappears.
+
+I argue that the infrastructure problem has two parts. The first is structural: there is no version-controlled repository model for non-software technological lineages. The second is conceptual: prevailing approaches often fail to represent subjective cultural evidence as part of the selection environment. I argue that both problems can be addressed within a single framework, the Technological Phylogenetic Repository (TPR).
+
+The paper advances three deliberately modest claims. First, subjective cultural evidence can function as selection-pressure metadata in technological evolution. Second, technological lineages can be represented in a commit-based repository structure analogous, though not identical, to version control in software. Third, a specialized multi-agent system can plausibly construct such repositories from heterogeneous source types. The result would not simply be a better archive; it would be a reusable empirical substrate for testing claims in computational memetics, cultural evolution, and innovation forecasting.
+
+\section{Related Work and Motivation}
+The proposal draws on several adjacent literatures.
+
+A first relevant tradition is technological and cultural phylogenetics. Work in archaeology, cultural evolution, and the historical sciences has shown that phylogenetic and network methods can recover meaningful relationships among artifacts, traditions, and symbolic systems [1, 2, 3, 4, 6, 7, 8, 9, 10, 40]. These studies demonstrate that lineages in material culture are not merely metaphorical. However, most existing work remains fragmented across case studies and rarely produces reusable, continuously updated lineage repositories.
+
+A second tradition is patent-based technology evolution research. Patent citation analysis, technology mapping, semantic extraction, and convergence forecasting have produced important results, including methods for detecting technological recombination and measuring disruption [15, 16, 17, 18, 19, 20, 21, 22, 23, 37, 39]. These approaches are analytically powerful but constrained by their input substrate. Patent networks are records of formalized claims, not full ecological descriptions of technological life.
+
+A third tradition is computational memetics and cultural evolution. These fields offer theoretical models of cultural transmission, replication, retention, mutation, and selection [11, 12, 13, 14, 30, 31, 32, 33, 34]. Yet they often lack a durable empirical substrate for material artifacts. Biological evolution benefits from sequence databases and curated phylogenies. Software evolution benefits from repositories and issue histories. Material culture research still lacks an equivalent shared infrastructure.
+
+A fourth relevant area is software evolution research itself. Software engineering has produced rich work on version histories, code survival, maintainability trends, ecosystem evolution, and the lifetime of fine-grained program elements [24, 25, 26, 38]. These studies matter here not because software and hardware are identical, but because they show what becomes possible once change history is structured at scale.
+
+Taken together, these literatures point to a clear gap. We have methods for modeling evolution, and we have theories about technological change, but we lack a unified repository model that captures lineages, diffs, component dependencies, and causal pressures for non-software artifacts.
+
+\section{Subjective Evidence as Part of the Selection Environment}
+The strongest claim of this paper is that subjective evidence should not be treated as a residual narrative layer outside the causal model. In many technological contexts, it is part of the selection environment itself.
+
+A recurring methodological instinct in formal research is to privilege sources that appear objective: patents, measurements, specifications, standards, and engineering records. That instinct is understandable. Such sources are easier to normalize, compare, and verify. But if the question is not only what changed, but why one design path prevailed while another disappeared, subjective evidence becomes much harder to dismiss.
+
+Users complain about failures, but they also reveal expectations. Consumers attach prestige to materials, distrust safety features, prefer visible complexity or simplicity, reject unfamiliar interfaces, overvalue convenience, or tolerate inefficiency for symbolic reasons. Firms respond not only to engineering constraints but also to status competition, perceived demand, regulatory fear, repair burden, and reputational pressure. These forces are culturally mediated, but they are no less real as selection pressures, as shown across cultural transmission, material-culture, and consumer-behavior research [7, 9, 27, 28, 29, 36].
+
+A useful analogy comes from biology. Selection pressure is not a property of an organism alone; it emerges from the relationship between organism and environment. Likewise, a technology does not succeed because of technical merit in the abstract. It succeeds or fails within an environment of users, institutions, norms, infrastructure, ideology, prices, fear, and desire.
+
+This does not imply that subjective evidence should be accepted uncritically. It should instead be represented explicitly, with provenance and confidence labels, alongside objective evidence. A historically credible model of technological evolution should be able to distinguish inventor-stated engineering constraints from aggregated user dissatisfaction, directly attested causal claims from inferred cultural pressures, and isolated anecdote from repeated complaint patterns.
+
+\section{The Technological Phylogenetic Repository}
+I propose the Technological Phylogenetic Repository as a repository model for the evolutionary history of non-software artifacts.
+
+\subsection{The commit as the basic unit}
+The fundamental unit of a TPR is the commit. A commit represents an artifact state at a particular time and records the transition from one version to the next. Unlike a software commit, a TPR commit is not merely a change record. It is a causal record. At minimum, it should include:
+
+\begin{itemize}
+  \item an artifact identifier,
+  \item a version date or date range,
+  \item a description of physical or functional specifications,
+  \item references to component lineages,
+  \item structured objective pressures,
+  \item structured subjective pressures,
+  \item a natural-language diff summary,
+  \item full provenance.
+\end{itemize}
+
+This structure turns historical description into a machine-readable evolutionary record.
+
+\subsection{Recursive lineages}
+A product is not a terminal object. It is composed of subcomponents whose own histories matter. A bicycle lineage, for example, depends on separate but interacting histories of tires, metallurgy, chains, bearings, frame geometry, and manufacturing methods. Many apparent high-level innovations are only understandable when subcomponent lineages are visible. TPRs should therefore be recursive wherever the evidence permits: products contain components, components contain materials, and all can have their own commits.
+
+\subsection{Objective and subjective pressure layers}
+One advantage of a TPR is that it does not collapse all causation into a single undifferentiated field. It explicitly separates objective pressures from subjective pressures.
+
+Objective pressures include inventor-stated problems, standards changes, manufacturing constraints, documented failures, input costs, and measurable performance trade-offs. Subjective pressures include user complaints, prestige associations, style preferences, safety anxieties, cultural aversions, community narratives, and recurring sentiment about desired improvements.
+
+These layers should remain analytically separable. That enables later tests of whether subjective evidence actually improves reconstruction quality or forecasting accuracy. If it does not, the framework should be revised accordingly. If it does, the field gains a principled way to model a broader technological environment.
+
+\section{Multi-Agent Construction Architecture}
+The main practical question is not whether such repositories are conceptually appealing, but whether they can be built. I argue that they can, using a divide-and-conquer multi-agent architecture.
+
+Archaeologist agents would work over pre-digital and historical corpora: museum catalogs, excavation reports, archival documents, trade manuals, and anthropological studies [1, 2, 3, 4, 6, 8, 40]. Their role would be to recover early lineage structure and historically attested pressures.
+
+Patent agents would extract formal lineage relations and inventor-stated problem definitions from patent corpora [15, 17, 19, 20, 37, 39]. These are especially valuable because many patents explicitly articulate the deficiency of prior designs.
+
+Review-mining agents would process modern consumer and practitioner discourse: reviews, repair forums, technical journalism, complaint databases, and product communities [7, 9, 27, 28, 29, 36]. Their role would be to identify repeated user-expressed pressures and normalize them into structured annotations.
+
+Diff agents would reconcile heterogeneous evidence into commit-level summaries. They would distinguish direct evidence from inference, manage conflicting accounts, and generate standardized change narratives.
+
+Observer agents would operate across repositories to detect macro-patterns, especially convergence among independent lineages approaching similar solutions. These agents would be used retrospectively first and, if validated, prospectively for signal detection.
+
+The architecture is intentionally modular. Different domains may require different source mixes, confidence policies, and extraction heuristics. The key point is not that one monolithic agent can solve the problem, but that heterogeneous, role-specific agents can collaboratively build lineage records that no single workflow could plausibly assemble.
+
+To assess the feasibility of this architecture in a constrained setting, a small-scale pilot reconstruction was conducted on a historically documented artifact family.
+
+\section{Pilot Demonstration: Safety Bicycle Lineage}
+We present a pilot demonstration of the TPR framework using the safety bicycle (1876--1892). The scope is deliberately tight: four commits, sourced from patents, museum objects, period advertisements, and contemporary commentary. The purpose is to test whether a material artifact lineage can be represented as a versioned, provenance-rich repository with structured selection pressures---both objective and subjective---without speculation. The pilot is intentionally limited in scope and is not intended as a comprehensive reconstruction, but as a feasibility test of the proposed repository structure and annotation scheme.
+
+The lineage comprises four design states. Commit A (1876--1878), the Lawson Lever Safety, introduced a low-frame, lever-driven bicycle explicitly marketed as a ``safety'' alternative to the high-wheeler. Commit B (1879--1884), the Lawson Bicyclette, replaced levers with a chain drive to the rear wheel, improving drivetrain efficiency. Commit C (1885--1887), the Rover Safety, crystallized the modern diamond frame with equal-sized wheels and solid rubber tires, achieving widespread commercial success. Commit D (1888--1892) adopted pneumatic tires, smoothing the ride and catalyzing the 1890s cycling boom. A shallow tire subcomponent lineage runs in parallel: solid rubber (1876--1887) $\rightarrow$ pneumatic (1888--1892).
+
+The C$\rightarrow$D transition---pneumatic-tire adoption---provides the clearest illustration of the framework's analytical value. The physical change is the replacement of solid rubber with Dunlop's inflatable design (1888). Objective pressures are high-confidence: comfort improves as the tire absorbs shocks; speed increases due to lower rolling resistance. Evidence includes Dunlop's 1889 race demonstrations and contemporary accounts.
+
+Subjective pressures are also clearly evidenced and materially improve the explanation. Public health anxieties about cycling, captured in the 1895 ``bicycle face'' press debate, show that perceived safety was salient; pneumatic tires were promoted as a healthier alternative. More consequentially, comfort enabled cycling's social expansion; deliberate 1890s advertising campaigns framed the bicycle as suitable for women, aligning with Victorian notions of propriety. This cultural shift is documented in modern scholarship analyzing those advertisements. While the exact magnitude of subjective effects remains unquantified, they explain why a component upgrade triggered a mass social phenomenon rather than a niche technical refinement.
+
+Table~\ref{tab:pilot-pressures} summarizes the pressure annotation for this transition.
+
+\begin{table}[ht]
+\centering
+\caption{Pressure annotation for the pneumatic-tire transition (C $\rightarrow$ D).}
+\label{tab:pilot-pressures}
+\begin{tabular}{l l l p{6cm}}
+\toprule
+\textbf{Pressure} & \textbf{Type} & \textbf{Evidence} & \textbf{Direct/Inferred} \\
+\midrule
+Comfort improvement & Objective (performance) & Dunlop race demo (1889); \textit{Wheeling} Magazine descriptions & Direct \\
+Speed increase & Objective (performance) & Rolling resistance theory; contemporary race outcomes & Mixed \\
+Reduced safety anxieties & Subjective (perceived safety) & ``bicycle face'' press debate (1895); \textit{Wheeling} commentary & Direct \\
+Social acceptability for women & Subjective (cultural) & GMTMA analysis of 1890s women's bicycle advertising & Mixed \\
+Aspirational modernity & Subjective (status) & Magazine tone; advertising style & Inferred \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Comparing objective-only and hybrid interpretations across all transitions yields a disciplined mixed result. Hybrid annotation improved explanatory adequacy in one transition (C$\rightarrow$D),\allowbreak provided modest additional context in another (B$\rightarrow$C),\allowbreak and contributed negligibly in a third (A$\rightarrow$B). No claim is made that subjective pressure universally improves explanatory power; rather, its contribution appears contingent on the specific transition and available evidence. This indicates that subjective pressure is conditionally useful rather than universally required; it enhances explanation where cultural and perceptual factors demonstrably shaped selection, but should not be appended indiscriminately.
+
+Limitations are clear. The sample is minimal---one artifact family over a 16-year window. Evidence for subjective pressures relies on advertising rhetoric and press commentary; direct behavioral data is scarce. Historical coverage is uneven; other artifact families may yield different patterns. Within these bounds, the pilot confirms feasibility: a small, source-backed, versioned lineage with disciplined subjective annotation is possible and non-speculative. Larger-scale evaluation is required to generalize. The framework remains testable and falsifiable---this pilot demonstrates feasibility, not completeness.
+
+Scaling this approach will require systematic methods for pressure extraction, normalization, and inter-annotator consistency, which are not addressed in this pilot.
+
+A cleaned version of the pilot repository, including structured commit objects and source annotations, is available as a supplementary artifact.
+
+\section{Research Applications}
+The pilot results provide an initial indication of how structured lineage data may support the applications discussed below.
+
+Access to structured technological phylogenetic repositories also enables a form of contextual reconstruction for unfamiliar artifacts. By traversing a lineage of prior states together with their associated selection pressures, a system can recover not only the functional characteristics of an artifact but also the constraints and expectations under which it evolved. This includes both objective pressures, such as performance trade-offs and manufacturing constraints, and subjective pressures, such as user perceptions, safety anxieties, and culturally mediated preferences. In principle, such traversal provides a mechanism for interpreting artifacts that are otherwise difficult to understand in isolation, by situating them within a structured history of iterative change. The result is not a complete or automatic understanding, but a progressively refined contextualization grounded in documented evolutionary pathways. This capability is not evaluated in the present work, but follows directly from the representational structure proposed here.
+
+A mature TPR ecosystem would enable at least three substantive research programs.
+
+First, it would provide a stronger empirical foundation for computational memetics and cultural evolution. Instead of relying primarily on analogy, toy models, or digital meme corpora, researchers could test transmission and retention models against structured histories of material artifacts.
+
+Second, it would support richer convergence analysis and innovation forecasting. Patent-only systems can detect some signals, but they miss informal redesign and consumer-driven pressure [15, 16, 17, 18, 19, 20, 23, 37, 39]. A repository that captures both lineage structure and broader selection signals could produce more informative convergence maps.
+
+Third, it would support a more rigorous study of multiple discovery. Independent invention is well documented, but we still understand relatively little about the pressure configurations under which it becomes likely. TPRs could support event comparison at a level of detail not currently available, especially when linked to cross-domain evolution pathways and convergence signals [20, 23, 37, 39].
+
+\section{Evaluation Strategy}
+Because this paper is a position paper, the appropriate standard is not immediate proof, but clear criteria for falsification and validation.
+
+A reasonable pilot would focus on one artifact family with relatively dense historical documentation, such as the safety bicycle, or another artifact family with rich historical records and visible subcomponent evolution [1, 6, 7, 40]. The pilot should include enough commits to make lineage reconstruction meaningful, enough subcomponent depth to test recursion, and enough heterogeneous evidence to test pressure annotation.
+
+Three evaluation questions are essential.
+
+First, are the reconstructed lineages historically credible to domain experts?
+
+Second, are the pressure annotations traceable, temporally aligned, and consistently structured?
+
+Third, does the inclusion of subjective pressure data improve explanatory or predictive performance relative to an objective-only baseline?
+
+That third question is the most important. If hybrid annotation does not outperform objective-only models on held-out historical cases, then the added complexity is not justified. The proposal should ultimately be judged by that standard.
+
+\section{Limitations}
+Several limitations deserve emphasis.
+
+Historical coverage is uneven. Some technologies, regions, and periods are richly documented; others are sparse. A TPR will inherit these biases.
+
+Pressure annotation is partly interpretive. Even with careful provenance and confidence scoring, some causal statements will remain inferential rather than directly attested.
+
+Convergence detection should not be oversold. Observer outputs would initially be hypotheses, not reliable predictions.
+
+Finally, the current paper does not present a built repository, a benchmark, or an annotated dataset. The contribution is a framework, not an empirical result.
+
+\section{Conclusion}
+The study of technological evolution has methods, theories, and abundant raw material, but it still lacks one important thing: a shared empirical substrate for versioned material-culture lineages. Patent networks provide part of that substrate, but only part. To understand why technologies change, it is not enough to record formal prior art. We also need structured representations of the broader selection environment in which technologies are judged, adopted, modified, and abandoned.
+
+The Technological Phylogenetic Repository is proposed as that missing infrastructure. By combining commit-based lineage modeling, explicit pressure annotation, and multi-agent construction from heterogeneous evidence, it offers a path toward a more empirical science of technological evolution. The proposal is ambitious, but it is also testable. A focused pilot can determine whether the framework is historically credible, technically tractable, and analytically worthwhile.
+
+If successful, TPRs could provide a common substrate for work spanning cultural evolution, computational memetics, innovation studies, and the history of technology. If unsuccessful, the field would still benefit from the attempt because it would clarify which parts of technological history can be formalized and which resist reduction. Either outcome would move the field forward.
+
+\begin{thebibliography}{99}
+\sloppy
+
+\bibitem{ref1}Eerkens, J. W.; Bettinger, R. L.; McElreath, R. (2017). Cultural Transmission Theory and the Archaeological Record. Mapping Our Ancestors. 169-184. \url{https://doi.org/10.4324/9780203786376-11}
+
+\bibitem{ref2}O'Brien, M. J.; Vidiella, B.; Duran-Nebreda, S.; Bentley, R. A.; et al. (2025). Archaeology and the Construction of Artifact Lineages: From Culture History to Phylogenetics. Biological Theory. 20(3), 189-211. \url{https://doi.org/10.1007/s13752-025-00491-x}
+
+\bibitem{ref3}Prentiss, A. M.; Walsh, M. J.; Denis, M.; Foor, T. A. (2025). The cultural macroevolution of lithic technological strategies in Northern and Western North America during the upper Pleistocene and Holocene. Journal of Anthropological Archaeology. 77, 101665. \url{https://doi.org/10.1016/j.jaa.2025.101665}
+
+\bibitem{ref4}Schillinger, K.; Mesoudi, A.; Lycett, S. J. (2016). Copying error, evolution, and phylogenetic signal in artifactual traditions: An experimental approach using ``model artifacts''. Journal of Archaeological Science. 70, 23-34. \url{https://doi.org/10.1016/j.jas.2016.04.013}
+
+\bibitem{ref5}White AE; Koch TJ; Jensen TZT; Niemann J; et al. (2025). Ancient DNA and biomarkers from artefacts: insights into technology and cultural practices in Neolithic Europe. Proceedings of the Royal Society B: Biological Sciences. 292(2057), 20250092. \url{https://doi.org/10.1098/rspb.2025.0092}
+
+\bibitem{ref6}Mendoza Straffon, L. (ed.) (2016). Cultural Phylogenetics: Concepts and Applications in Archaeology. Interdisciplinary Evolution Research. \url{https://doi.org/10.1007/978-3-319-25928-4}
+
+\bibitem{ref7}Mesoudi, A.; Thornton, A.; Dabbs, G. (2018). Current and potential roles of archaeology in the development of cultural evolutionary theory. Philosophical Transactions of the Royal Society B: Biological Sciences. 373(1743), 20170057. \url{https://doi.org/10.1098/rstb.2017.0057}
+
+\bibitem{ref8}List, J. (2016). Cultural Phylogenetics: Concepts and Applications in Archaeology. Systematic Biology. syw085. \url{https://doi.org/10.1093/sysbio/syw085}
+
+\bibitem{ref9}Crema, E. R.; Bortolini, E.; Lake, M. (2024). How Cultural Transmission Through Objects Impacts Inferences About Cultural Evolution. Journal of Archaeological Method and Theory. 31(1), 202-226. \url{https://doi.org/10.1007/s10816-022-09599-x}
+
+\bibitem{ref10}Frerebeau, N. (2020). Towards a phylogenetic classification of ancient ceramics. Journal of Archaeological Method and Theory. 27(3), 1070-1102. \url{https://doi.org/10.1007/s10816-019-09420-5}
+
+\bibitem{ref11}Russell, C. J. S.; Muthukrishna, M. (2021). Dual Inheritance Theory. Encyclopedia of Evolutionary Psychological Science. 2140-2146. \url{https://doi.org/10.1007/978-3-030-00262-6\_1381}
+
+\bibitem{ref12}Newson, L.; Richerson, P. (2018). Dual Inheritance Theory. The International Encyclopedia of Anthropology. 1-5. \url{https://doi.org/10.1002/9781118924396.wbiea1881}
+
+\bibitem{ref13}Creanza N; Kolodny O; Feldman MW (2017). Cultural evolutionary theory: How culture evolves and why it matters. Proceedings of the National Academy of Sciences of the United States of America. 114(30), 7782-7789. \url{https://pmc.ncbi.nlm.nih.gov/articles/PMC5544263/}
+
+\bibitem{ref14}Richerson, P. J. (2017). Recent Critiques of Dual Inheritance Theory. Evolutionary Studies in Imaginative Culture. 1(1), 203-212. \url{https://doi.org/10.1111/tops.12735}
+
+\bibitem{ref15}Park I; Yoon B (2018). Technological opportunity discovery for technological convergence using patent citation networks. Journal of Informetrics. 12(4), 1199-1222. \url{https://pmc.ncbi.nlm.nih.gov/articles/PMC7172972/}
+
+\bibitem{ref16}Yu, L.; Yu, B. (2024). Uncovering the impact of technology convergence on innovation performance: Evidence from patent data. Managerial and Decision Economics. 45(6), 3641-3662. \url{https://doi.org/10.1002/mde.4203}
+
+\bibitem{ref17}Karvonen, M.; Kässi, T. (2013). Patent citations as a tool for analysing the early stages of convergence. Technological Forecasting and Social Change. 80(6), 1094-1107. \url{https://doi.org/10.1016/j.techfore.2012.05.006}
+
+\bibitem{ref18}Tsai, Y.; Chen, C.; Su, H. (2025). The Influence of Knowledge Originality on Technology Convergence. Engineering Management Journal. 1-15. \url{https://doi.org/10.1080/10429247.2025.2589069}
+
+\bibitem{ref19}Zheng X; Wu Q; Luo X; Lv K (2025). Analyzing the evolutionary trajectory of technological themes based on multi-source data fusion. PLOS ONE. 20(6), e0324933. \url{https://pmc.ncbi.nlm.nih.gov/articles/PMC12140655/}
+
+\bibitem{ref20}Afifuddin, M.; Seo, W. (2024). Predictive modeling for technology convergence: A patent data-driven approach through technology topic networks. Computers \& Industrial Engineering. 188, 109909. \url{https://doi.org/10.1016/j.cie.2024.109909}
+
+\bibitem{ref21}Karvonen, M.; Kässi, T. (2011). Patent analysis for analysing technological convergence. Foresight. 13(5), 34-50. \url{https://doi.org/10.1108/14636681111170202}
+
+\bibitem{ref22}Yan, D.; Zhang, H.; Wang, S. (2023). Analysis on the Trend of Technology Convergence Based on Patent. Proceedings of the 2nd International Conference on Information Economy, Data Modeling and Cloud Computing, ICIDC 2023, June 2--4, 2023, Nanchang, China. \url{https://doi.org/10.4108/eai.2-6-2023.2334606}
+
+\bibitem{ref23}Li, S.; Ma, W.; Wang, X.; Zhang, X.; et al. (2024). Technology Convergence and Its Influence on Innovation Networks. 2024 Portland International Conference on Management of Engineering and Technology (PICMET). 1-9. \url{https://doi.org/10.23919/picmet64035.2024.10653267}
+
+\bibitem{ref24}Spinellis D; Louridas P; Kechagia M (2021). Software evolution: the lifetime of fine-grained elements. PeerJ Computer Science. 7, e372. \url{https://pmc.ncbi.nlm.nih.gov/articles/PMC7959608/}
+
+\bibitem{ref25}Rajlich, V. (2014). Software evolution and maintenance. Future of Software Engineering Proceedings. 133-144. \url{https://doi.org/10.1145/2593882.2593893}
+
+\bibitem{ref26}Kim, M.; Meng, N.; Zhang, T. (2019). Software Evolution. Handbook of Software Engineering. 223-282. \url{https://doi.org/10.1007/978-3-030-00262-6\_6}
+
+\bibitem{ref27}Hussain ST; Will M (2021). Materiality, Agency and Evolution of Lithic Technology. Journal of Archaeological Method and Theory. 28(2), 617-670. \url{https://pmc.ncbi.nlm.nih.gov/articles/PMC8550397/}
+
+\bibitem{ref28}Diachenko, A.; Rivers, R. J.; Sobkowiak-Tabaka, I. (2023). Convergent Evolution of Prehistoric Technologies: the Entropy and Diversity of Limited Solutions. Journal of Archaeological Method and Theory. 30(4), 1168-1199. \url{https://doi.org/10.1007/s10816-023-09623-8}
+
+\bibitem{ref29}Charbonneau, M. (2020). Cultural evolution and the origins of material culture. Philosophical Transactions of the Royal Society B: Biological Sciences. 375(1803), 20190452. \url{https://doi.org/10.1098/rstb.2019.0452}
+
+\bibitem{ref30}Caldwell CA; Millen AE (2008). Studying cumulative cultural evolution in the laboratory. Philosophical Transactions of the Royal Society B: Biological Sciences. 363(1509), 3529-39. \url{https://doi.org/10.1098/rstb.2008.0139}
+
+\bibitem{ref31}Williams, H.; Scharf, A.; Ryba, A. R.; Ryan Norris, D.; et al. (2022). Cumulative cultural evolution and mechanisms for cultural selection. Nature Communications. 13(1). \url{https://doi.org/10.1038/s41467-022-31621-9}
+
+\bibitem{ref32}Osiurak F; Claidière N; Bluet A; Brogniart J; et al. (2022). Technical reasoning bolsters cumulative technological culture through convergent transformations. Science Advances. 8(9), eabl7446. \url{https://pmc.ncbi.nlm.nih.gov/articles/PMC8890708/}
+
+\bibitem{ref33}Planer RJ (2025). Memetics and the Parallel Architecture. Topics in Cognitive Science. 17(4), 898-908. \url{https://doi.org/10.1111/tops.12735}
+
+\bibitem{ref34}(2019). Beyond the Meme: Development and Structure in Cultural Evolution. Minnesota Studies in the Philosophy of Science. \url{https://doi.org/10.5749/j.ctvnp0krm}
+
+\bibitem{ref35}Chen, Z.; Zhang, Y.; Fang, Y.; Geng, Y.; et al. (2025). On the Evolution of Knowledge Graphs: A Survey and Perspective. Information Fusion. 121, 103124. \url{https://doi.org/10.1016/j.inffus.2025.103124}
+
+\bibitem{ref36}Malter MS; Holbrook MB; Kahn BE; Parker JR; et al. (2020). The Past, Present, and Future of Consumer Research. Marketing Letters. 31(2-3), 137-149. \url{https://doi.org/10.1007/s11002-020-09526-8}
+
+\bibitem{ref37}Kim, J.; Lee, S. (2017). Forecasting multi-technology convergence: A patent-based analysis approach for the case of IT and BT industries in 2020. Scientometrics. 111(1), 47-65. \url{https://doi.org/10.1007/s11192-017-2275-4}
+
+\bibitem{ref38}Ruparelia, N. B. (2010). The history of version control. ACM SIGSOFT Software Engineering Notes. 35(1), 5-9. \url{https://doi.org/10.1145/1668862.1668876}
+
+\bibitem{ref39}Liu, P.; Zhou, W.; Feng, L.; Wang, J.; et al. (2024). Mapping and comparing the technology evolution paths of scientific papers and patents. Scientometrics. 129(4), 1975-2005. \url{https://doi.org/10.1007/s11192-024-04961-0}
+
+\bibitem{ref40}(2018). Phylogenetic analysis of archaeological assemblages. Journal of Archaeological Science. \url{https://www.sciencedirect.com/science/article/pii/S030544031830118X}
+
+\end{thebibliography}
+
+\fussy
+
+\end{document}

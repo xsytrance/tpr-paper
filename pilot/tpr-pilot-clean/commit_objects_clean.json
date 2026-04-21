@@ -1,0 +1,327 @@
+{
+  "commits": [
+    {
+      "commit_id": "A",
+      "artifact_family": "safety_bicycle",
+      "artifact_variant_name": "Lawson Lever Safety",
+      "date_start": "1876",
+      "date_end": "1878",
+      "parent_commit_id": null,
+      "component_refs": ["frame", "drive"],
+      "physical_specs_summary": "Low frame, lever-driven pedals, smaller wheels than high-wheeler, solid rubber tires, ~65.5 lbs",
+      "functional_specs_summary": "Rider near ground; lever propulsion; marketed as 'safety'; experimental",
+      "objective_pressures": [
+        {
+          "pressure_id": "A.obj1",
+          "label": "improved stability",
+          "description": "Lower seat/wheels reduce center of gravity and fall risk",
+          "pressure_type": "safety",
+          "evidence_strength": "medium",
+          "temporal_alignment": "direct",
+          "source_ids": ["LAWSON_PATENT_1876", "GRACE_LAWSON"],
+          "direct_or_inferred": "direct",
+          "notes": "Patent and summaries state safety as goal"
+        },
+        {
+          "pressure_id": "A.obj2",
+          "label": "mechanical simplicity (lever drive)",
+          "description": "Levers avoid chain complexities of the era",
+          "pressure_type": "manufacturability",
+          "evidence_strength": "medium",
+          "temporal_alignment": "direct",
+          "source_ids": ["LAWSON_PATENT_1876", "GRACE_LAWSON"],
+          "direct_or_inferred": "direct",
+          "notes": null
+        }
+      ],
+      "subjective_pressures": [],
+      "diff_summary_from_parent": null,
+      "causal_claims": [
+        {
+          "claim_id": "A.claim1",
+          "statement": "Lawson coined term 'safety' for marketing",
+          "evidence_source_ids": ["GRACE_LAWSON"],
+          "confidence": "medium"
+        }
+      ],
+      "provenance": ["LAWSON_PATENT_1876", "GRACE_LAWSON", "LAWSON_PATENT_1876_ALT"],
+      "confidence_overall": "medium",
+      "notes": "Small-scale production; not a market success. Chain drive not yet present."
+    },
+    {
+      "commit_id": "B",
+      "artifact_family": "safety_bicycle",
+      "artifact_variant_name": "Lawson Bicyclette",
+      "date_start": "1879",
+      "date_end": "1884",
+      "parent_commit_id": "A",
+      "component_refs": ["frame", "drive"],
+      "physical_specs_summary": "Chain-driven rear wheel; centrally mounted pedals; smaller front wheel; solid rubber tires; 'bridle-rod' steering",
+      "functional_specs_summary": "Rear-wheel chain drive improves efficiency; retains dwarf proportions; marketed as distinct from high-wheeler",
+      "objective_pressures": [
+        {
+          "pressure_id": "B.obj1",
+          "label": "increased drivetrain efficiency",
+          "description": "Chain drive transfers power more effectively than levers",
+          "pressure_type": "performance",
+          "evidence_strength": "medium",
+          "temporal_alignment": "direct",
+          "source_ids": ["LAWSON_PATENT_1879", "SMITH_BICYCLETTE", "GRACE_LAWSON"],
+          "direct_or_inferred": "direct",
+          "notes": null
+        },
+        {
+          "pressure_id": "B.obj2",
+          "label": "manufacturing refinement",
+          "description": "Chain drive simpler to produce at scale than lever linkage",
+          "pressure_type": "manufacturability",
+          "evidence_strength": "low",
+          "temporal_alignment": "inferred",
+          "source_ids": ["GRACE_LAWSON"],
+          "direct_or_inferred": "inferred",
+          "notes": "Inferred from trade note on limited commercial uptake"
+        }
+      ],
+      "subjective_pressures": [],
+      "diff_summary_from_parent": "Change: lever drive replaced by chain drive to rear wheel. Likely drivers: improved mechanical efficiency, simpler power transmission. Evidence: UK Patent 3924 (1879), Science Museum object. Uncertainty: why rear wheel larger than front; why equal wheel size not yet adopted.",
+      "causal_claims": [
+        {
+          "claim_id": "B.claim1",
+          "statement": "Bicyclette hailed by Coventry trade as first rear-drive safety",
+          "evidence_source_ids": ["GRACE_LAWSON"],
+          "confidence": "medium"
+        }
+      ],
+      "provenance": ["LAWSON_PATENT_1879", "SMITH_BICYCLETTE", "GRACE_LAWSON"],
+      "confidence_overall": "medium",
+      "notes": "Commercial production limited (Rudge); established rear-chain topology as promising."
+    },
+    {
+      "commit_id": "C",
+      "artifact_family": "safety_bicycle",
+      "artifact_variant_name": "Rover Safety (diamond frame)",
+      "date_start": "1885",
+      "date_end": "1887",
+      "parent_commit_id": "B",
+      "component_refs": ["frame", "wheels", "drive"],
+      "physical_specs_summary": "Diamond frame; equal-sized wheels (26–30\") rear chain drive; solid rubber tires; saddle over rear axle",
+      "functional_specs_summary": "Stable geometry; easy mounting; standardized gearing; mass-produced; marketed as 'safety bicycle'",
+      "objective_pressures": [
+        {
+          "pressure_id": "C.obj1",
+          "label": "improved stability and handling",
+          "description": "Equal wheel sizes and low center of gravity improve balance, reduce tipping",
+          "pressure_type": "safety",
+          "evidence_strength": "high",
+          "temporal_alignment": "direct",
+          "source_ids": ["ROVER_SMMT", "GRACE_LAWSON", "PERF_BIKE_BLOG"],
+          "direct_or_inferred": "direct",
+          "notes": null
+        },
+        {
+          "pressure_id": "C.obj2",
+          "label": "manufacturing standardization",
+          "description": "Single wheel size, simple frame reduce parts complexity",
+          "pressure_type": "manufacturability",
+          "evidence_strength": "medium",
+          "temporal_alignment": "direct",
+          "source_ids": ["GRACE_LAWSON", "ROVER_SMMT"],
+          "direct_or_inferred": "mixed",
+          "notes": "Direct from design; scale inferred from adoption"
+        },
+        {
+          "pressure_id": "C.obj3",
+          "label": "cost reduction",
+          "description": "Simpler frame and fewer variants lower production cost vs high-wheelers/tricycles",
+          "pressure_type": "cost",
+          "evidence_strength": "medium",
+          "temporal_alignment": "inferred",
+          "source_ids": ["GRACE_LAWSON", "ROVER_AD_1885"],
+          "direct_or_inferred": "inferred",
+          "notes": "Price context from secondary trade histories"
+        }
+      ],
+      "subjective_pressures": [
+        {
+          "pressure_id": "C.subj1",
+          "label": "perceived safety",
+          "description": "Public perceived 'safety' bicycles as less dangerous; social acceptability grew",
+          "pressure_type": "perceived safety",
+          "evidence_strength": "medium",
+          "temporal_alignment": "direct",
+          "source_ids": ["ROVER_AD_1885", "GRACE_LAWSON"],
+          "direct_or_inferred": "direct",
+          "notes": "Advertising uses 'safety' claim; commentary notes reduced danger"
+        },
+        {
+          "pressure_id": "C.subj2",
+          "label": "fashion/modernity signal",
+          "description": "New machine symbolized modern, progressive mobility",
+          "pressure_type": "fashion/style",
+          "evidence_strength": "low",
+          "temporal_alignment": "inferred",
+          "source_ids": ["ROVER_AD_1885"],
+          "direct_or_inferred": "inferred",
+          "notes": "From advertising tone; weakly cross-validated"
+        }
+      ],
+      "diff_summary_from_parent": "Change: equal-sized wheels and diamond frame adopted; chain drive standardized. Likely drivers: stability, ease of use, cost reduction; 'safety' marketing strong. Evidence: Rover museum object, Graces Guide, 1885 advertisement. Uncertainty: whether marketing preceded or followed rider confidence.",
+      "causal_claims": [
+        {
+          "claim_id": "C.claim1",
+          "statement": "Rover design 'set the pattern to the world' (Cycling Magazine)",
+          "evidence_source_ids": ["GRACE_LAWSON"],
+          "confidence": "medium"
+        }
+      ],
+      "provenance": ["ROVER_SMMT", "GRACE_LAWSON", "ROVER_AD_1885", "PERF_BIKE_BLOG"],
+      "confidence_overall": "medium",
+      "notes": "Archetypal 'safety bicycle' that dominated late 1880s markets."
+    },
+    {
+      "commit_id": "D",
+      "artifact_family": "safety_bicycle",
+      "artifact_variant_name": "Pneumatic-tire Safety",
+      "date_start": "1888",
+      "date_end": "1892",
+      "parent_commit_id": "C",
+      "component_refs": ["tire"],
+      "physical_specs_summary": "Diamond frame, chain drive, equal wheels; pneumatic inflatable rubber tires (Dunlop, 1888); some rim brakes",
+      "functional_specs_summary": "Smoother ride, faster on rough roads, less vibration; longer rides feasible; expanded user base (including women); added air-pressure maintenance",
+      "objective_pressures": [
+        {
+          "pressure_id": "D.obj1",
+          "label": "comfort improvement",
+          "description": "Pneumatic tires absorb road shocks, reducing rider fatigue",
+          "pressure_type": "performance",
+          "evidence_strength": "high",
+          "temporal_alignment": "direct",
+          "source_ids": ["DUNLOP_PRESS", "ONLINE_MUSEUM_PNEU", "WHEELING_MAG"],
+          "direct_or_inferred": "direct",
+          "notes": null
+        },
+        {
+          "pressure_id": "D.obj2",
+          "label": "speed increase",
+          "description": "Lower rolling resistance vs solid rubber",
+          "pressure_type": "performance",
+          "evidence_strength": "medium",
+          "temporal_alignment": "direct",
+          "source_ids": ["DUNLOP_PRESS"],
+          "direct_or_inferred": "mixed",
+          "notes": "Race results confirm; generalizable inference"
+        }
+      ],
+      "subjective_pressures": [
+        {
+          "pressure_id": "D.subj1",
+          "label": "reduced safety anxieties",
+          "description": "Public perception of cycling safety improved due to comfort/control; 'bicycle face' debate shows health concerns were salient",
+          "pressure_type": "perceived safety",
+          "evidence_strength": "medium",
+          "temporal_alignment": "direct",
+          "source_ids": ["BICYCLE_FACE_REA", "WHEELING_MAG"],
+          "direct_or_inferred": "direct",
+          "notes": "Newspaper commentary reflects concerns; pneumatic tires positioned as healthier"
+        },
+        {
+          "pressure_id": "D.subj2",
+          "label": "social acceptability for women",
+          "description": "Comfort helped make cycling acceptable for women; marketed accordingly",
+          "pressure_type": "cultural aversion",
+          "evidence_strength": "medium",
+          "temporal_alignment": "direct",
+          "source_ids": ["WOMEN_ADV_GMTMA", "DUNLOP_PRESS"],
+          "direct_or_inferred": "mixed",
+          "notes": "Scholarship shows deliberate women's marketing; contemporaneous ads would strengthen"
+        },
+        {
+          "pressure_id": "D.subj3",
+          "label": "aspirational modernity",
+          "description": "Pneumatic-tired safeties symbolized cutting-edge technology and personal advancement",
+          "pressure_type": "status signaling",
+          "evidence_strength": "low",
+          "temporal_alignment": "inferred",
+          "source_ids": ["WHEELING_MAG"],
+          "direct_or_inferred": "inferred",
+          "notes": "From period magazine tone; needs more primary ad evidence"
+        }
+      ],
+      "diff_summary_from_parent": "Change: pneumatic tires adopted over solid rubber. Likely drivers: comfort and speed gains; secondary effect: expanded user base (women, older riders). Evidence: Dunlop history, cycling magazines. Uncertainty: exact diffusion speed; whether comfort alone explains boom vs. marketing amplification.",
+      "causal_claims": [
+        {
+          "claim_id": "D.claim1",
+          "statement": "Dunlop's pneumatic tire was a key enabler of the 1890s cycling boom",
+          "evidence_source_ids": ["DUNLOP_PRESS", "ONLINE_MUSEUM_PNEU", "WHEELING_MAG"],
+          "confidence": "high"
+        },
+        {
+          "claim_id": "D.claim2",
+          "statement": "Bicycle became socially acceptable for women partly due to comfort improvements",
+          "evidence_source_ids": ["WOMEN_ADV_GMTMA"],
+          "confidence": "medium"
+        }
+      ],
+      "provenance": ["DUNLOP_PRESS", "ONLINE_MUSEUM_PNEU", "WHEELING_MAG", "BICYCLE_FACE_REA", "WOMEN_ADV_GMTMA"],
+      "confidence_overall": "medium",
+      "notes": "Shows subsystem (tire) adoption into main artifact lineage."
+    }
+  ],
+  "subcomponent_lineage": {
+    "component": "tire",
+    "commits": [
+      {
+        "commit_id": "tire_solid",
+        "component": "tire",
+        "date_start": "1876",
+        "date_end": "1887",
+        "parent_commit_id": null,
+        "physical_specs": "Solid rubber tire, glued/riveted to wood/iron wheel; no cushioning",
+        "pressures": [
+          {
+            "pressure_id": "tire_solid.obj1",
+            "label": "simple construction",
+            "pressure_type": "manufacturability",
+            "evidence_strength": "high",
+            "temporal_alignment": "direct",
+            "source_ids": ["ROVER_SMMT", "SMITH_BICYCLETTE"],
+            "direct_or_inferred": "direct",
+            "notes": "Museum object descriptions show solid construction"
+          }
+        ],
+        "confidence_overall": "high"
+      },
+      {
+        "commit_id": "tire_pneumatic_introduction",
+        "component": "tire",
+        "date_start": "1888",
+        "date_end": "1892",
+        "parent_commit_id": "tire_solid",
+        "physical_specs": "Inflatable rubber tube inside outer tire; vulcanized rubber; requires pump/patching",
+        "pressures": [
+          {
+            "pressure_id": "tire_pneu.obj1",
+            "label": "comfort and speed",
+            "pressure_type": "performance",
+            "evidence_strength": "high",
+            "temporal_alignment": "direct",
+            "source_ids": ["DUNLOP_PRESS", "ONLINE_MUSEUM_PNEU"],
+            "direct_or_inferred": "direct",
+            "notes": "Race demonstrations and period accounts confirm"
+          },
+          {
+            "pressure_id": "tire_pneu.subj1",
+            "label": "reduced safety anxieties",
+            "pressure_type": "perceived safety",
+            "evidence_strength": "medium",
+            "temporal_alignment": "direct",
+            "source_ids": ["BICYCLE_FACE_REA", "WHEELING_MAG"],
+            "direct_or_inferred": "mixed",
+            "notes": "Contemporary health debates show concerns existed; tires marketed as healthier"
+          }
+        ],
+        "confidence_overall": "high"
+      }
+    ]
+  }
+}
